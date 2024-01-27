@@ -38,11 +38,33 @@ class LoginPage extends StatelessWidget {
               child: TextField(
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  icon: Icon(Icons.phone_android),
                   labelText: 'Username',
                   hintText: 'Enter your Username',
                 ),
               ),
+            ),
+            SizedBox(height: 20,),
+            Container(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Username',
+                  hintText: 'Enter your Username',
+                ),
+              ),
+            ),
+
+            SizedBox(height: 30,),
+            Container(
+              width: double.infinity,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: Colors.deepPurple,
+                ),
+                  onPressed: () {},
+                  child: Text('Login')),
             )
           ],
         ),
