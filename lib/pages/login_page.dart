@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imdb_client/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -41,7 +42,9 @@ class LoginPage extends StatelessWidget {
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.deepPurple,
                     ),
-                    onPressed: () {print('oh you pressed me');},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                    },
                     child: Text('Login')),
               )
             ],
