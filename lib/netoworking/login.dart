@@ -33,7 +33,7 @@ Future<void> loginUser(String username, String password) async {
 }
 
 
-Future<void> fetchData() async() {
+Future<void> fetchData() async{
   final String apiUrl = 'https://imdemo.onrender.com/streamplatform/';
 
   try{
