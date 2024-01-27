@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;  // Add this line
 import 'package:flutter/material.dart';
 
@@ -35,14 +34,14 @@ Future<void> loginUser(String username, String password) async {
 
 
 
-void showLoginToast() {
-  Fluttertoast.showToast(
-    msg: 'Login successfully',
-    toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.BOTTOM,
-    timeInSecForIosWeb: 1,
-    backgroundColor: Colors.green,
-    textColor: Colors.white,
-    fontSize: 16.0,
-  );
-}
+// void showLoginToast() {
+//   Fluttertoast.showToast(
+//     msg: 'Login successfully',
+//     toastLength: Toast.LENGTH_SHORT,
+//     gravity: ToastGravity.BOTTOM,
+//     timeInSecForIosWeb: 1,
+//     backgroundColor: Colors.green,
+//     textColor: Colors.purple,
+//     fontSize: 16.0,
+//   );
+// }

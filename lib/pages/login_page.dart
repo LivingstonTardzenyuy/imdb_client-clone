@@ -51,8 +51,9 @@ class LoginPage extends StatelessWidget {
                       foregroundColor: Colors.white,
                       backgroundColor: Colors.deepPurple,
                     ),
-                    onPressed: () {
-                      showLoginToast();
+                    onPressed: () async {
+                      await loginUser(username.text, password.text);
+                      // showLoginToast();
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Text('Login')),
