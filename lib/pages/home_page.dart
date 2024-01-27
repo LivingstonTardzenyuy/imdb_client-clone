@@ -24,6 +24,14 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     dataFuture = fetchData();
   }
+  List<Map<String, dynamic>> getWatchlist(dynamic item) {
+    // Check if 'watchlist' is a list and not null
+    if (item['watchlist'] is List) {
+      return List<Map<String, dynamic>>.from(item['watchlist']);
+    }
+    return [];
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -32,16 +40,16 @@ class _HomePageState extends State<HomePage> {
       ),
       body: FutureBuilder<List<dynamic>>(
         future: dataFuture,
-        builder: (context, snapshot){
-          if (snapshot.connectionState == ConnectionState.waiting){
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
               child: CircularProgressIndicator(),
             );
-          } else if (snapshot.hasError){
+          } else if (snapshot.hasError) {
             return Center(
               child: Text('Error: ${snapshot.error}'),
             );
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty){
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(
               child: Text('No data available'),
             );
@@ -51,19 +59,24 @@ class _HomePageState extends State<HomePage> {
               itemCount: dataList.length,
               itemBuilder: (context, index) {
                 Map<String, dynamic> item = dataList[index];
+                List<Map<String, dynamic>> watchlist = getWatchlist(item);
                 return Container(
                   padding: const EdgeInsets.all(9),
                   child: ListTile(
-                    title: Text(item['title'] ?? '', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),),
-                    subtitle: Text(item['subtitle'] ?? ''),
-                    trailing: Text(item['trailing'] ?? ''),
+                    title: Text(item['name'] ?? '', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold)),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: watchlist.map((watchListItem) {
+                        return Text(watchListItem['title'] ?? '');
+                      }).toList(),
+                    ),
+                    trailing: Text(item['about'] ?? ''),
                   ),
                 );
               },
             );
           }
         },
-
       ),
     );
   }
