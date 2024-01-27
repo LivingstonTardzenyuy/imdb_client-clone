@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imdb_client/pages/home_page.dart';
 
+import '../netoworking/login.dart';
+
 class LoginPage extends StatelessWidget {
 
   @override
@@ -50,6 +52,7 @@ class LoginPage extends StatelessWidget {
                       backgroundColor: Colors.deepPurple,
                     ),
                     onPressed: () {
+                      showLoginToast();
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                     },
                     child: Text('Login')),
