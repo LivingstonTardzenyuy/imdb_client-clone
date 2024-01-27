@@ -54,7 +54,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () async {
                       await loginUser(username.text, password.text);
                       // showLoginToast();
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(username: username.text)));
                     },
                     child: Text('Login')),
               )
