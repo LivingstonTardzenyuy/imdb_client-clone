@@ -33,11 +33,15 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Username',
-                hintText: 'Enter your Username'
+            Container(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  icon: Icon(Icons.phone_android),
+                  labelText: 'Username',
+                  hintText: 'Enter your Username',
+                ),
               ),
             )
           ],
