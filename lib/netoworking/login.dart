@@ -33,15 +33,20 @@ Future<void> loginUser(String username, String password) async {
 }
 
 
+Future<void> fetchData() async() {
+  final String apiUrl = 'https://imdemo.onrender.com/streamplatform/';
 
-// void showLoginToast() {
-//   Fluttertoast.showToast(
-//     msg: 'Login successfully',
-//     toastLength: Toast.LENGTH_SHORT,
-//     gravity: ToastGravity.BOTTOM,
-//     timeInSecForIosWeb: 1,
-//     backgroundColor: Colors.green,
-//     textColor: Colors.purple,
-//     fontSize: 16.0,
-//   );
-// }
+  try{
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      var responseData = json.decode(response.body);
+      print('Data retieved: $responseData');
+    } else {
+      print('Data retrieval failed: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }
+  } catch(error){
+    print('Error during data retrieval: $error');
+  }
+}
