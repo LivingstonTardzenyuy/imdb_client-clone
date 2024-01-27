@@ -33,7 +33,7 @@ Future<void> loginUser(String username, String password) async {
 }
 
 
-Future<void> fetchData() async{
+Future<List<dynamic>> fetchData() async{
   final String apiUrl = 'https://imdemo.onrender.com/streamplatform/';
 
   try{
@@ -42,11 +42,14 @@ Future<void> fetchData() async{
     if (response.statusCode == 200) {
       var responseData = json.decode(response.body);
       print('Data retieved: $responseData');
+      return responseData;
     } else {
       print('Data retrieval failed: ${response.statusCode}');
       print('Response body: ${response.body}');
+      throw Exception('Data retrival failed');
     }
   } catch(error){
     print('Error during data retrieval: $error');
+    throw Exception('Error during data retrieval');
   }
 }

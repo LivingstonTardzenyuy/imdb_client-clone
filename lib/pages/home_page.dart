@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../netoworking/login.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({
     Key? key,
@@ -12,8 +14,16 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
+  late Future<List<dynamic>> dataFuture ;
   @override
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    dataFuture = fetchData();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -38,14 +48,15 @@ class _HomePageState extends State<HomePage> {
           } else {
             List<dynamic> dataList = snapshot.data!;
             return ListView.builder(
-              itemCount: ,
+              itemCount: dataList.length,
               itemBuilder: (context, index) {
+                Map<String, dynamic> item = dataList[index];
                 return Container(
                   padding: const EdgeInsets.all(9),
                   child: ListTile(
-                    title: Text('God', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),),
-                    subtitle: Text('active'),
-                    trailing: Text('is God'),
+                    title: Text(item['title'] ?? '', style: TextStyle(color: Colors.blueGrey, fontWeight: FontWeight.bold),),
+                    subtitle: Text(item['subtitle'] ?? ''),
+                    trailing: Text(item['trailing'] ?? ''),
                   ),
                 );
               },
